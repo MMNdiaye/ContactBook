@@ -19,7 +19,7 @@ public abstract class TextMenu {
             System.out.println(menuOption);
     }
 
-    private MenuOption chooseOption() throws NoSuchElementException {
+    public MenuOption chooseOption() throws NoSuchElementException {
         int selectedIndex = Integer.valueOf(scanner.nextLine());
         MenuOption selectedOption = getOption(selectedIndex);
         return selectedOption;

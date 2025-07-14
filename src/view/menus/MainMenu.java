@@ -12,7 +12,7 @@ public class MainMenu extends TextMenu {
             MainMenuOption.QUIT
     };
 
-    MainMenu() {
+    public MainMenu() {
         super(menuOptions);
     }
 }
