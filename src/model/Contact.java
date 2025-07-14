@@ -1,21 +1,23 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Contact {
+    private static long lastId = 0;
     private long id;
     private String name;
-    private List<String> phoneNumbers;
+    private Set<String> phoneNumbers;
 
-    Contact(String name) {
+    public Contact(String name) {
         this.id = generateId();
         this.name = name;
-        this.phoneNumbers = new ArrayList<>();
+        this.phoneNumbers = new HashSet<>();
     }
 
     private long generateId() {
-        return 1;
+        lastId++;
+        return lastId;
     }
 
     public void addPhoneNumber(String phoneNumber) {
@@ -35,8 +37,13 @@ public class Contact {
         this.name = name;
     }
 
-    public List<String> getPhoneNumbers() {
+    public Set<String> getPhoneNumbers() {
         return phoneNumbers;
     }
 
+    @Override
+    public String toString() {
+        return "{name: " + name
+                + ", phone numbers: " + phoneNumbers +"}";
+    }
 }
