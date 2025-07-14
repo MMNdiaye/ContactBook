@@ -20,6 +20,7 @@ public abstract class TextMenu {
     }
 
     public MenuOption chooseOption() throws NoSuchElementException {
+        showOptions();
         int selectedIndex = Integer.valueOf(scanner.nextLine());
         MenuOption selectedOption = getOption(selectedIndex);
         return selectedOption;
