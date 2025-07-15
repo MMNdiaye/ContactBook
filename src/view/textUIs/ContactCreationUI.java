@@ -1,6 +1,7 @@
 package view.textUIs;
 
 import model.Contact;
+import util.FormatChecker;
 import util.NonUniquePhoneNumberException;
 
 
@@ -39,8 +40,7 @@ class ContactCreationUI extends TextUI{
     }
 
     private boolean isPhoneNumberWellFormatted(String phoneNumber) {
-        String pattern = "(\\(\\+\\d{3}\\) )?\\d{7,9}";
-        boolean isWellFormatted = phoneNumber.matches(pattern);
+        boolean isWellFormatted = FormatChecker.checkPhoneNumber(phoneNumber);
         if (!isWellFormatted)
             System.out.println("Not well formatted");
         return isWellFormatted;
