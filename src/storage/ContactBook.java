@@ -65,6 +65,10 @@ public class ContactBook {
             throw new NonUniquePhoneNumberException();
     }
 
+    public Collection<Contact> getAllContacts() {
+        return contactMap.values();
+    }
+
     public void deleteContact(long contactId) {
         contactMap.remove(contactId);
     }
