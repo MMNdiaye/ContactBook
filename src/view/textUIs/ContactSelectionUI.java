@@ -18,6 +18,7 @@ public class ContactSelectionUI extends TextUI{
     public void start() {
         askCriteria();
         selectContact();
+        System.out.println(selectedContact);
     }
 
     public void askCriteria() {
@@ -88,7 +89,7 @@ public class ContactSelectionUI extends TextUI{
         try {
             selectedContact = contactBook.contactByPhoneNumber(phoneNumber);
         } catch(NoSuchElementException e) {
-            System.out.println(e.getMessage());
+            System.out.println("This phone number isn't in your contacts");
             selectedContact = null;
         }
     }

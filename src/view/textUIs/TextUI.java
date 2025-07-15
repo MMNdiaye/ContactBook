@@ -54,20 +54,32 @@ public abstract class TextUI {
                 showContactOptions();
             }
 
-            case MainMenuOption.SHOW_CONTACTS -> {}
+            case MainMenuOption.SHOW_CONTACTS -> showContacts();
 
             case MainMenuOption.QUIT, ContactMenuOption.QUIT -> isExited = true;
 
-            case ContactMenuOption.RENAME_CONTACT -> {}
+            case ContactMenuOption.RENAME_CONTACT ->
+                    new ContactModificationUI().rename();
 
-            case ContactMenuOption.ADD_PHONE_NUMBER -> {}
+            case ContactMenuOption.ADD_PHONE_NUMBER ->
+                    new ContactModificationUI().addPhoneNumber();
 
-            case ContactMenuOption.REMOVE_PHONE_NUMBER -> {}
+            case ContactMenuOption.REMOVE_PHONE_NUMBER ->
+                new ContactModificationUI().removePhoneNumber();
 
-            case ContactMenuOption.DELETE_CONTACT -> {}
+            case ContactMenuOption.DELETE_CONTACT -> {
+                new ContactModificationUI().deleteContact();
+                isExited = true;
+            }
 
             default -> {}
         }
+        showContactIfSelected();
+    }
+
+    private void showContactIfSelected() {
+        if (selectedContact != null)
+            System.out.println("Contact: " + selectedContact);
     }
 
     private void selectContact() {
@@ -78,5 +90,11 @@ public abstract class TextUI {
     private void showContactOptions() {
         if (selectedContact != null)
             new ContactUI(selectedContact).start();
+
+    }
+
+    private void showContacts() {
+        System.out.println("Contact Book:");
+        System.out.println(contactBook.getAllContacts());
     }
 }

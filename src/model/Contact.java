@@ -1,6 +1,7 @@
 package model;
 
 import java.util.HashSet;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 public class Contact {
@@ -22,6 +23,10 @@ public class Contact {
 
     public void addPhoneNumber(String phoneNumber) {
         phoneNumbers.add(phoneNumber);
+    }
+
+    public void removePhoneNumber(String phoneNumber) {
+        phoneNumbers.remove(phoneNumber);
     }
 
     public long getId() {
